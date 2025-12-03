@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo de Imóveis — ImoPrime</title>
+  <link rel="stylesheet" href="STYLE.CSS">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="INDEX.HTML" class="logo">THE FUTURE<span class="accent">IMOBILIÁRIA</span></a>
+      </div>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="INDEX.HTML#home">Início</a></li>
+          <li><a href="CATALOG.HTML">Catálogo de Imóveis</a></li>
+          <li><a href="INDEX.HTML#tour3d">Tour 3D</a></li>
+          <li><a href="INDEX.HTML#about">Sobre a Imobiliária</a></li>
+          <li><a href="INDEX.HTML#vantagens">Vantagens</a></li>
+          <li><a href="INDEX.HTML#testimonials">Depoimentos</a></li>
+          <li><a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+a+imobili%C3%A1ria." target="_blank" rel="noopener">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <button class="btn btn-ghost" id="menuToggle">☰</button>
+        <a class="btn btn-primary" href="https://wa.me/5511999999999?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+visita." target="_blank" rel="noopener">Agendar Visita</a>
+        <div class="theme-switch">
+          <button id="themeToggle" class="theme-toggle" title="Alternar tema">☾</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:1.5rem;">
+    <section class="catalog-header" style="align-items:flex-start;">
+      <div>
+        <h1>Catálogo de Imóveis</h1>
+        <p class="muted">Filtre e encontre imóveis com tours 3D e informações completas.</p>
+      </div>
+      <div class="filters" style="margin-top:.4rem">
+        <select id="filterLocation"><option value="">Localização</option><option>São Paulo</option><option>Rio de Janeiro</option><option>Porto Alegre</option></select>
+        <select id="filterBedrooms"><option value="">Quartos</option><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select>
+        <select id="filterPrice"><option value="">Preço</option><option value="0-500000">Até R$500.000</option><option value="500000-1000000">R$500.000–1.000.000</option><option value="1000000+">Acima de R$1.000.000</option></select>
+        <input id="searchInput" placeholder="Buscar por bairro ou característica" />
+      </div>
+    </section>
+
+    <section id="catalog-grid">
+      <div class="cards" id="cards">
+        <!-- Muitos cards de exemplo para demostrar paginação -->
+        <!-- Card 1 -->
+        <article class="card" data-location="São Paulo" data-bedrooms="3" data-price="1200000">
+          <figure class="card-image"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3b3f6b" alt="Apartamento"></figure>
+          <div class="card-body"><h3>Apartamento Luxuoso no Centro</h3><p class="muted">3 quartos • 150m²</p><div class="card-footer"><strong class="price">R$ 1.200.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=1">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button></div></div></div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card" data-location="Rio de Janeiro" data-bedrooms="2" data-price="800000">
+          <figure class="card-image"><img src="https://images.unsplash.com/photo-1572120360610-d971b9b1b93e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=2e5e5c" alt="Casa"></figure>
+          <div class="card-body"><h3>Casa à Beira-Mar</h3><p class="muted">2 quartos • 120m²</p><div class="card-footer"><strong class="price">R$ 800.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=2">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button></div></div></div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card" data-location="São Paulo" data-bedrooms="1" data-price="450000">
+          <figure class="card-image"><img src="https://images.unsplash.com/photo-1572121914540-0d7c9b5fbf1f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=9a9b9c" alt="Estúdio"></figure>
+          <div class="card-body"><h3>Estúdio Moderno</h3><p class="muted">1 quarto • 42m²</p><div class="card-footer"><strong class="price">R$ 450.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=3">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button></div></div></div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card" data-location="Porto Alegre" data-bedrooms="3" data-price="650000">
+          <figure class="card-image"><img src="https://images.unsplash.com/photo-1560449889-6b8c8a8b8d6f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcd12" alt="Casa cidade"></figure>
+          <div class="card-body"><h3>Casa Familiar</h3><p class="muted">3 quartos • 130m²</p><div class="card-footer"><strong class="price">R$ 650.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=4">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button></div></div></div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card" data-location="São Paulo" data-bedrooms="2" data-price="980000">
+          <figure class="card-image"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=efgh34" alt="Apartamento moderno"></figure>
+          <div class="card-body"><h3>Apartamento com Varanda</h3><p class="muted">2 quartos • 100m²</p><div class="card-footer"><strong class="price">R$ 980.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=5">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button></div></div></div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="card" data-location="Rio de Janeiro" data-bedrooms="4" data-price="2200000">
+          <figure class="card-image"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ijkl56" alt="Cobertura"></figure>
+          <div class="card-body"><h3>Cobertura Penthouse</h3><p class="muted">4 quartos • 320m²</p><div class="card-footer"><strong class="price">R$ 2.200.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=6">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button></div></div></div>
+        </article>
+
+        <!-- Mais cards podem ser adicionados dinamicamente -->
+      </div>
+
+      <div class="pagination" style="display:flex;justify-content:center;gap:.5rem;margin-top:1.25rem;align-items:center">
+        <button id="prevPage" class="btn btn-ghost">◀ Anterior</button>
+        <div id="pageInfo" class="muted">Página 1</div>
+        <button id="nextPage" class="btn btn-ghost">Próxima ▶</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><div><strong>ImoPrime</strong><p class="muted">(11) 99999-9999 · contato@imoprime.com</p></div></div></footer>
+
+  <script src="SCRIPT.JS"></script>
+  <script src="CATALOG.JS"></script>
+</body>
+</html>

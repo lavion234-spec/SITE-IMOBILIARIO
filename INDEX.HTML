@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Imobiliária Premium — Encontre seu imóvel</title>
+	<link rel="stylesheet" href="STYLE.CSS">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+	<header class="site-header">
+		<div class="container header-inner">
+			<div class="brand">
+				<a href="#" class="logo">THE FUTURE<span class="accent"> IMOBILIÁRIA</span></a>
+			</div>
+			<nav class="main-nav" id="mainNav">
+				<ul>
+					<li><a href="#home">Início</a></li>
+					  <li><a href="CATALOG.HTML">Catálogo de Imóveis</a></li>
+					<li><a href="#tour3d">Tour 3D</a></li>
+					<li><a href="#about">Sobre a Imobiliária</a></li>
+					<li><a href="#vantagens">Vantagens</a></li>
+					<li><a href="#testimonials">Depoimentos</a></li>
+					<li><a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+a+imobili%C3%A1ria." target="_blank" rel="noopener">Contato</a></li>
+				</ul>
+			</nav>
+			<div class="actions">
+				<button class="btn btn-ghost" id="menuToggle">☰</button>
+				<a class="btn btn-primary" href="https://wa.me/5511999999999?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+visita." target="_blank" rel="noopener">Agendar Visita</a>
+				<div class="theme-switch">
+					<button id="themeToggle" class="theme-toggle" title="Alternar tema">☾</button>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<section id="home" class="hero">
+			<div class="hero-overlay"></div>
+			<div class="container hero-content">
+				<div class="hero-text">
+					<h1>Encontre o imóvel ideal com tecnologia 3D e experiência premium</h1>
+					<p class="lead">Visite, explore e decida com confiança — tours 3D interativos, plantas digitais e atendimento personalizado.</p>
+					<div class="hero-ctas">
+						<a href="CATALOG.HTML" class="btn btn-secondary">Ver Imóveis</a>
+						<a href="#tour3d" class="btn btn-outline">Entrar em Tour 3D</a>
+					</div>
+				</div>
+				<div class="hero-visual">
+					<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1c1b5b5f5d6f2b6b1" alt="Imóvel de alto padrão">
+				</div>
+			</div>
+		</section>
+
+		<section id="catalog" class="catalog container">
+			<div class="catalog-header">
+				<h2>Catálogo de Imóveis</h2>
+				<div class="filters">
+					<select id="filterLocation"><option value="">Localização</option><option>São Paulo</option><option>Rio de Janeiro</option><option>Porto Alegre</option></select>
+					<select id="filterBedrooms"><option value="">Quartos</option><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select>
+					<select id="filterPrice"><option value="">Preço</option><option value="0-500000">Até R$500.000</option><option value="500000-1000000">R$500.000–1.000.000</option><option value="1000000+">Acima de R$1.000.000</option></select>
+					<input id="searchInput" placeholder="Buscar por bairro ou característica" />
+				</div>
+			</div>
+
+			<div class="cards" id="cards">
+				<!-- Exemplo de card -->
+				<article class="card" data-location="São Paulo" data-bedrooms="3" data-price="1200000">
+					<figure class="card-image"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3b3f6b" alt="Apartamento luxuoso"></figure>
+					<div class="card-body">
+						<h3>Apartamento Luxuoso no Centro</h3>
+						<p class="muted">3 quartos • 150m² • Condomínio com piscina e segurança</p>
+						<div class="card-footer">
+							<strong class="price">R$ 1.200.000</strong>
+							<div class="card-actions">
+								<a class="btn btn-sm" href="PROPERTY.HTML" data-id="1">Ver detalhes</a>
+								<button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button>
+							</div>
+						</div>
+					</div>
+				</article>
+
+				<article class="card" data-location="Rio de Janeiro" data-bedrooms="2" data-price="800000">
+					<figure class="card-image"><img src="https://images.unsplash.com/photo-1572120360610-d971b9b1b93e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=2e5e5c" alt="Casa à beira-mar"></figure>
+					<div class="card-body">
+						<h3>Casa à Beira-Mar</h3>
+						<p class="muted">2 quartos • 120m² • Vista mar</p>
+						<div class="card-footer">
+							<strong class="price">R$ 800.000</strong>
+							<div class="card-actions">
+								<a class="btn btn-sm" href="PROPERTY.HTML" data-id="2">Ver detalhes</a>
+								<button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section id="tour3d" class="tour3d container">
+			<h2>Tour 3D</h2>
+			<p class="muted">Explore plantas 3D e maquetes digitais — interaja com rotação, zoom e troca de ambientes.</p>
+			<div class="tour-grid">
+				<div class="tour-card">
+					<model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" camera-controls autoplay ar ar-modes="webxr scene-viewer quick-look" style="width:100%;height:320px; background:#111"></model-viewer>
+					<div class="tour-meta"><h4>Planta Duplex</h4><button class="btn btn-sm">Abrir ambientes</button></div>
+				</div>
+				<div class="tour-card">
+					<model-viewer src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb" camera-controls style="width:100%;height:320px; background:#111"></model-viewer>
+					<div class="tour-meta"><h4>Maquete Digital</h4><button class="btn btn-sm">Abrir ambientes</button></div>
+				</div>
+			</div>
+		</section>
+
+		<section id="about" class="about container">
+			<h2>Sobre a Imobiliária</h2>
+			<div class="about-grid">
+				<div>
+					<h3>Nossa História</h3>
+					<p>Atuamos no mercado premium oferecendo tecnologia e atendimento humano desde 2010.</p>
+				</div>
+				<div>
+					<h3>Equipe</h3>
+					<div class="team">
+						<div class="team-member"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=4d4f5" alt="Corretor"><p>Mariana — CEO</p></div>
+						<div class="team-member"><img src="https://images.unsplash.com/photo-1545996124-1d1d83f7fb76?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=3d4a5" alt="Corretor"><p>Lucas — Vendas</p></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="vantagens" class="vantagens container">
+			<h2>Vantagens</h2>
+			<ul class="features">
+				<li><strong>Tecnologia 3D:</strong> Tours e plantas digitais interativas.</li>
+				<li><strong>Atendimento:</strong> Corretor dedicado e visitas agendadas.</li>
+				<li><strong>Transparência:</strong> Informações completas e documentação clara.</li>
+				<li><strong>Experiência:</strong> Acompanhamento do início ao fim.</li>
+			</ul>
+		</section>
+
+		<section id="testimonials" class="testimonials container">
+			<h2>Depoimentos</h2>
+			<div class="testimonial-list">
+				<blockquote class="testimonial"><p>Excelente atendimento e a tecnologia 3D nos ajudou muito.</p><cite>— Ana P., compradora</cite></blockquote>
+				<blockquote class="testimonial"><p>Profissionalismo e rapidez. Recomendo!</p><cite>— João M., vendedor</cite></blockquote>
+			</div>
+		</section>
+
+		<!-- Seção de contato removida: contato agora abre via WhatsApp a partir do menu/CTA -->
+	</main>
+
+	<footer class="site-footer">
+		<div class="container footer-inner">
+			<div>
+				<strong>ImoPrime</strong>
+				<address>Rua Exemplo, 123 — São Paulo</address>
+				<p>Contato: (11) 99999-9999 · contato@imoprime.com</p>
+			</div>
+			<div>
+				<p>Selo de Credibilidade</p>
+				<img src="https://via.placeholder.com/120x60?text=Selo" alt="Selo">
+			</div>
+		</div>
+	</footer>
+
+	<div id="tourModal" class="modal" aria-hidden="true">
+		<div class="modal-content">
+			<button class="modal-close" id="modalClose">✕</button>
+			<model-viewer id="modalModel" src="" camera-controls style="width:100%;height:60vh;background:#000"></model-viewer>
+		</div>
+	</div>
+
+	<script src="SCRIPT.JS"></script>
+</body>
+</html>
