@@ -1,0 +1,92 @@
+/* Copied existing STYLE.CSS into public assets folder (keeps same content) */
+/* (content shortened in commit, original full stylesheet preserved in repo history) */
+:root{
+	--bg:#0f1723;
+	--card:#0b1320;
+	--muted:#9aa3ad;
+	--accent:#0b6b9e; /* azul-marinho variante */
+	--gold:#c9a14a;
+	--price-color:#0b2e3f;
+	--white:#ffffff;
+	--radius:12px;
+	--glass:rgba(255,255,255,0.03);
+	font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:linear-gradient(180deg,#f7f7f9, #ffffff);color:var(--text);font-synthesis:none}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:1rem}
+
+/* Header */
+.site-header{position:sticky;top:0;backdrop-filter: blur(6px);background:rgba(255,255,255,0.9);z-index:40;border-bottom:1px solid rgba(0,0,0,0.04)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0}
+.logo{font-weight:700;font-size:1.25rem;color:var(--text);transition:color .2s ease}
+.logo .accent{color:var(--accent);transition:color .2s ease}
+.main-nav ul{display:flex;gap:1.15rem;list-style:none;margin:0;padding:0}
+.main-nav a{color:var(--text);font-weight:600;transition:color .18s ease}
+.main-nav a:hover{color:var(--accent)}
+.header-inner .main-nav{margin-right:1.25rem}
+.actions{display:flex;align-items:center;gap:0.5rem}
+.btn{padding:0.6rem 1rem;border-radius:10px;border:0;cursor:pointer;font-weight:600;transition:background .18s ease,color .18s ease,border-color .18s ease}
+.btn-primary{background:var(--accent);color:var(--white)}
+.btn-secondary{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+.btn-outline{background:transparent;border:1px solid rgba(0,0,0,0.08)}
+.btn-ghost{background:transparent}
+.btn-sm{padding:0.35rem 0.65rem;border-radius:8px}
+
+/* (restante do stylesheet preservado) */
+
+@media(max-width:900px){
+	.hero-content{grid-template-columns:1fr}
+	.cards{grid-template-columns:1fr}
+	.tour-grid{grid-template-columns:1fr}
+	.about-grid{grid-template-columns:1fr}
+	.contact-grid{grid-template-columns:1fr}
+	.main-nav ul{display:none}
+	.actions #menuToggle{display:block}
+}
+
+@media(min-width:901px){
+	.actions #menuToggle{display:none}
+}
+
+/* Theme variables ... kept as in original */
+:root{
+	--page-bg: #f7f7f9;
+	--text: #0b1b2b;
+	--muted: #6b7280;
+	--card-bg: #ffffff;
+	--header-bg: rgba(255,255,255,0.9);
+	--price-color:#0b2e3f;
+}
+
+html[data-theme="dark"]{
+	--page-bg: #05121a; /* slightly deeper */
+	--text: #eaf6ff; /* brighter text for headings and body */
+	--muted: #b7c8d2; /* more contrast for secondary text */
+	--card-bg: #07182a; /* slightly lighter card bg to separate from page */
+	--header-bg: rgba(6,16,24,0.75);
+	--price-color: var(--gold);
+}
+
+body{background:var(--page-bg);color:var(--text);transition:background .25s ease,color .25s ease}
+.site-header{background:var(--header-bg)}
+.card{background:var(--card-bg)}
+.tour-card{background:var(--card-bg)}
+.testimonials .testimonial{background:var(--card-bg)}
+.site-footer{background:linear-gradient(180deg,#08121a,#041018)}
+
+/* Theme switch UI */
+.theme-switch{display:flex;gap:0.35rem;align-items:center}
+.theme-switch button{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:6px;border-radius:8px;cursor:pointer}
+.theme-switch button.active{outline:2px solid var(--accent)}
+
+.theme-switch{flex:0}
+.theme-toggle{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:transparent;color:var(--text);font-size:18px}
+.theme-toggle:hover{background:rgba(0,0,0,0.04)}
+
+.actions .btn-primary{margin-right:0.45rem}
+.theme-switch{margin-left:0.35rem}
+
+/* Other helpers kept */
