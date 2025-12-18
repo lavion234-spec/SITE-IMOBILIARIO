@@ -1,4 +1,4 @@
-# LUCAS GG — Site Imobiliário
+# — Site Imobiliário —
 
 Projeto front-end estático com exemplos de página inicial, catálogo e página de detalhe de imóvel, incluindo integração de tours 3D (model-viewer) e suporte a tema claro/escuro.
 
