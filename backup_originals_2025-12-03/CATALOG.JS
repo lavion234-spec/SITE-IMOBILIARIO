@@ -6,16 +6,16 @@ document.addEventListener('DOMContentLoaded',()=>{
   const pageInfo = document.getElementById('pageInfo');
   const prevBtn = document.getElementById('prevPage');
   const nextBtn = document.getElementById('nextPage');
-  const pageSize = allCards.length; // cards por página
+  const pageSize = 4; // cards por página
   let currentPage = 1;
 
   function totalPages(){
-    const visibleCards = allCards.filter(c=>c.style.display!=='none');
+    const visibleCards = allCards.filter(c=>c.style.display!=="none");
     return Math.max(1, Math.ceil(visibleCards.length / pageSize));
   }
 
   function visibleCards(){
-    return allCards.filter(c=>c.style.display!=='none');
+    return allCards.filter(c=>c.style.display!=="none");
   }
 
   function showPage(page){

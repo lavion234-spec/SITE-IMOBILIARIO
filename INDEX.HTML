@@ -8,7 +8,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+	<!-- model-viewer removido daqui; disponível somente na página de catálogo -->
 </head>
 <body>
 	<header class="site-header">
@@ -46,7 +46,6 @@
 					<p class="lead">Visite, explore e decida com confiança — tours 3D interativos, plantas digitais e atendimento personalizado.</p>
 					<div class="hero-ctas">
 						<a href="CATALOG.HTML" class="btn btn-secondary">Ver Imóveis</a>
-						<a href="#tour3d" class="btn btn-outline">Entrar em Tour 3D</a>
 					</div>
 				</div>
 				<div class="hero-visual">
@@ -66,54 +65,74 @@
 				</div>
 			</div>
 
-			<div class="cards" id="cards">
-				<!-- Exemplo de card -->
-				<article class="card" data-location="São Paulo" data-bedrooms="3" data-price="1200000">
-					<figure class="card-image"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3b3f6b" alt="Apartamento luxuoso"></figure>
-					<div class="card-body">
-						<h3>Apartamento Luxuoso no Centro</h3>
-						<p class="muted">3 quartos • 150m² • Condomínio com piscina e segurança</p>
-						<div class="card-footer">
-							<strong class="price">R$ 1.200.000</strong>
-							<div class="card-actions">
-								<a class="btn btn-sm" href="PROPERTY.HTML" data-id="1">Ver detalhes</a>
-								<button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button>
-							</div>
-						</div>
-					</div>
-				</article>
+			<section id="carousel" class="carousel">
+  <div class="carousel-container">
+    <article class="card" data-location="São Paulo" data-bedrooms="3" data-price="1200000">
+      <figure class="card-image"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3b3f6b" alt="Apartamento Luxuoso"></figure>
+      <div class="card-body">
+        <h3>Apartamento Luxuoso no Centro</h3>
+        <p class="muted">3 quartos • 150m² • Condomínio com piscina e segurança</p>
+        <div class="card-footer">
+          <strong class="price">R$ 1.200.000</strong>
+          <div class="card-actions">
+            <a class="btn btn-sm" href="PROPERTY.HTML" data-id="1">Ver detalhes</a>
+            <button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button>
+          </div>
+        </div>
+      </div>
+    </article>
 
-				<article class="card" data-location="Rio de Janeiro" data-bedrooms="2" data-price="800000">
-					<figure class="card-image"><img src="https://images.unsplash.com/photo-1572120360610-d971b9b1b93e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=2e5e5c" alt="Casa à beira-mar"></figure>
-					<div class="card-body">
-						<h3>Casa à Beira-Mar</h3>
-						<p class="muted">2 quartos • 120m² • Vista mar</p>
-						<div class="card-footer">
-							<strong class="price">R$ 800.000</strong>
-							<div class="card-actions">
-								<a class="btn btn-sm" href="PROPERTY.HTML" data-id="2">Ver detalhes</a>
-								<button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button>
-							</div>
-						</div>
-					</div>
-				</article>
-			</div>
+    <article class="card" data-location="Rio de Janeiro" data-bedrooms="2" data-price="800000">
+      <figure class="card-image"><img src="imagem/casa beira mar.avif" alt="Casa à Beira-Mar"></figure>
+      <div class="card-body">
+        <h3>Casa à Beira-Mar</h3>
+        <p class="muted">2 quartos • 120m² • Vista mar</p>
+        <div class="card-footer">
+          <strong class="price">R$ 800.000</strong>
+          <div class="card-actions">
+            <a class="btn btn-sm" href="PROPERTY.HTML" data-id="2">Ver detalhes</a>
+            <button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-location="Porto Alegre" data-bedrooms="4" data-price="1500000">
+      <figure class="card-image"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1c1b5b5f5d6f2b6b1" alt="Casa de Alto Padrão"></figure>
+      <div class="card-body">
+        <h3>Casa de Alto Padrão</h3>
+        <p class="muted">4 quartos • 200m² • Condomínio fechado</p>
+        <div class="card-footer">
+          <strong class="price">R$ 1.500.000</strong>
+          <div class="card-actions">
+            <a class="btn btn-sm" href="PROPERTY.HTML" data-id="3">Ver detalhes</a>
+            <button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-location="São Paulo" data-bedrooms="1" data-price="500000">
+      <figure class="card-image"><img src="https://images.unsplash.com/photo-1597094938301-5d4b8c1d1b2c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3b3f6b" alt="Studio Moderno"></figure>
+      <div class="card-body">
+        <h3>Studio Moderno</h3>
+        <p class="muted">1 quarto • 50m² • Próximo ao metrô</p>
+        <div class="card-footer">
+          <strong class="price">R$ 500.000</strong>
+          <div class="card-actions">
+            <a class="btn btn-sm" href="PROPERTY.HTML" data-id="4">Ver detalhes</a>
+            <button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <button class="carousel-control prev">&#10094;</button>
+  <button class="carousel-control next">&#10095;</button>
+</section>
 		</section>
 
-		<section id="tour3d" class="tour3d container">
-			<h2>Tour 3D</h2>
-			<p class="muted">Explore plantas 3D e maquetes digitais — interaja com rotação, zoom e troca de ambientes.</p>
-			<div class="tour-grid">
-				<div class="tour-card">
-					<model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" camera-controls autoplay ar ar-modes="webxr scene-viewer quick-look" style="width:100%;height:320px; background:#111"></model-viewer>
-					<div class="tour-meta"><h4>Planta Duplex</h4><button class="btn btn-sm">Abrir ambientes</button></div>
-				</div>
-				<div class="tour-card">
-					<model-viewer src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb" camera-controls style="width:100%;height:320px; background:#111"></model-viewer>
-					<div class="tour-meta"><h4>Maquete Digital</h4><button class="btn btn-sm">Abrir ambientes</button></div>
-				</div>
-			</div>
-		</section>
+		<!-- Tour 3D removido da página inicial. Tours disponíveis apenas no Catálogo. -->
 
 		<section id="about" class="about container">
 			<h2>Sobre a Imobiliária</h2>

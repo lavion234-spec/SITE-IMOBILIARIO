@@ -111,36 +111,4 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   });
 
-  // Carrossel
-  const carouselContainer = document.querySelector('.carousel-container');
-  const carouselItems = document.querySelectorAll('.card');
-  const prevButton = document.querySelector('.carousel-control.prev');
-  const nextButton = document.querySelector('.carousel-control.next');
-
-  let currentIndex = 0;
-
-  function showItems(index) {
-    carouselItems.forEach((item, i) => {
-      item.style.display = (i >= index && i < index + 2) ? 'block' : 'none';
-    });
-  }
-
-  function nextItems() {
-    currentIndex = (currentIndex + 2) % carouselItems.length;
-    showItems(currentIndex);
-  }
-
-  function prevItems() {
-    currentIndex = (currentIndex - 2 + carouselItems.length) % carouselItems.length;
-    showItems(currentIndex);
-  }
-
-  nextButton.addEventListener('click', nextItems);
-  prevButton.addEventListener('click', prevItems);
-
-  // Auto-rotate every 5 seconds
-  setInterval(nextItems, 5000);
-
-  // Initialize carousel
-  showItems(currentIndex);
 });
