@@ -9,7 +9,7 @@ const RUNTIME_CACHE = 'imoprime-runtime';
 // Assets to cache on install
 const PRECACHE_ASSETS = [
   './',
-  './INDEX.HTML',
+  './index.html',
   './CATALOG.HTML',
   './PROPERTY.HTML',
   './STYLE.CSS',

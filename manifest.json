@@ -2,7 +2,7 @@
   "name": "ImoPrime - Imobiliária Premium",
   "short_name": "ImoPrime",
   "description": "Encontre o imóvel ideal com tecnologia 3D e experiência premium",
-  "start_url": "./INDEX.HTML",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f1723",
   "theme_color": "#0b6b9e",
