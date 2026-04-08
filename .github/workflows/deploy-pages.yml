@@ -21,13 +21,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Prepare static site artifact
+        run: |
+          mkdir -p _site
+          rsync -av --delete \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '.venv' \
+            --exclude 'backup_originals_2025-12-03' \
+            --exclude '*.md' \
+            --exclude 'LICENSE' \
+            ./ _site/
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
   deploy:
     environment:
