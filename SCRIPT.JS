@@ -125,6 +125,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   }
 
+  function showAllItems() {
+    carouselItems.forEach((item) => {
+      item.style.display = 'block';
+    });
+  }
+
   function nextItems() {
     currentIndex = (currentIndex + 2) % carouselItems.length;
     showItems(currentIndex);
@@ -135,12 +141,25 @@ document.addEventListener('DOMContentLoaded',()=>{
     showItems(currentIndex);
   }
 
-  nextButton.addEventListener('click', nextItems);
-  prevButton.addEventListener('click', prevItems);
+  const isDesktop = () => window.matchMedia('(min-width: 901px)').matches;
 
-  // Auto-rotate every 5 seconds
-  setInterval(nextItems, 5000);
+  if (nextButton && prevButton) {
+    nextButton.addEventListener('click', nextItems);
+    prevButton.addEventListener('click', prevItems);
+  }
 
-  // Initialize carousel
-  showItems(currentIndex);
+  if (!isDesktop()) {
+    setInterval(nextItems, 5000);
+    showItems(currentIndex);
+  } else {
+    showAllItems();
+  }
+
+  window.addEventListener('resize', () => {
+    if (isDesktop()) {
+      showAllItems();
+    } else {
+      showItems(currentIndex);
+    }
+  });
 });

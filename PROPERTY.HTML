@@ -5,22 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Detalhes do Imóvel — ImoPrime</title>
   <link rel="stylesheet" href="STYLE.CSS">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <a href="INDEX.HTML" class="logo">THE FUTURE<span class="accent">IMOBILIÁRIA</span></a>
+        <a href="INDEX.HTML" class="logo" aria-label="Lucas Vinicius - Corretor de Imóveis">
+          <img src="imagem/LOGO-transparent.png" alt="Lucas Vinicius - Corretor de Imóveis" class="logo-img">
+          <span class="logo-text">
+            <span class="logo-name">Lucas Vinicius</span>
+            <span class="logo-role">Corretor de Imóveis</span>
+          </span>
+        </a>
       </div>
       <nav class="main-nav" id="mainNav">
         <ul>
           <li><a href="INDEX.HTML#home">Início</a></li>
-          <li><a href="CATALOG.HTML">Catálogo de Imóveis</a></li>
-          <li><a href="INDEX.HTML#tour3d">Tour 3D</a></li>
+          <li><a href="CATALOG.HTML">Catálogo</a></li>
           <li><a href="INDEX.HTML#about">Sobre a Imobiliária</a></li>
           <li><a href="INDEX.HTML#vantagens">Vantagens</a></li>
           <li><a href="INDEX.HTML#testimonials">Depoimentos</a></li>
+          <li><a href="INDEX.HTML#blog">Notícias</a></li>
           <li><a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+a+imobili%C3%A1ria." target="_blank" rel="noopener">Contato</a></li>
         </ul>
       </nav>
@@ -74,8 +83,31 @@
       <p id="propertyDesc">—</p>
     </section>
   </main>
-  <footer class="site-footer" style="margin-top:2rem;"><div class="container footer-inner"><div><strong>ImoPrime</strong><p class="muted">(11) 99999-9999 · contato@imoprime.com</p></div></div></footer>
-  <script src="SCRIPT.JS"></script>
-  <script src="PROPERTY.JS"></script>
+  <footer class="site-footer" role="contentinfo" style="margin-top:2rem;">
+    <div class="container footer-model">
+      <div class="footer-brand">
+        <img src="imagem/LOGO-transparent.png" alt="Lucas Vinicius Imobiliaria" class="footer-brand-logo">
+        <div>
+          <h3><span>Lucas Vinicius</span><span>Corretor de Imoveis</span></h3>
+          <p>Modernidade, tecnologia e elegancia</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a class="footer-link" href="tel:+5511999999999"><span class="footer-icon">P</span><span>(11) 99999-9999</span></a>
+        <a class="footer-link" href="mailto:contato@imoprime.com"><span class="footer-icon">E</span><span>contato@imoprime.com</span></a>
+      </div>
+      <div class="footer-col">
+        <h4>Redes sociais</h4>
+        <a class="footer-link" href="https://instagram.com/imoprime" target="_blank" rel="noopener noreferrer"><span class="footer-icon">I</span><span>@imoprime</span></a>
+        <a class="footer-link" href="https://facebook.com/imoprime" target="_blank" rel="noopener noreferrer"><span class="footer-icon">F</span><span>/imoprime</span></a>
+        <a class="footer-link" href="https://linkedin.com/company/imoprime" target="_blank" rel="noopener noreferrer"><span class="footer-icon">L</span><span>imoprime</span></a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-line"></div>
+    </div>
+  </footer>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

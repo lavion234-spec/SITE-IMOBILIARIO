@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel de Imóveis</title>
+  <link rel="stylesheet" href="STYLE.CSS" />
+  <style>
+    .dashboard-wrap { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+    .dashboard-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 1rem; }
+    .panel { background: var(--card-bg); border: 1px solid rgba(185,135,46,.25); border-radius: var(--radius); padding: 1rem; }
+    .panel h2 { margin-top: 0; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-grid label { display: flex; flex-direction: column; gap: .35rem; font-weight: 600; }
+    .form-grid input, .form-grid textarea, .form-grid select { padding: .6rem; border-radius: var(--radius-sm); border: 1px solid rgba(185,135,46,.35); background: #fffdf8; color: #1f2933; }
+    .toolbar { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .75rem; }
+    .toolbar .btn { display: inline-flex; align-items: center; justify-content: center; }
+    .toolbar .btn-secondary { background: rgba(185,135,46,.12); border: 1px solid rgba(185,135,46,.55); color: #6f4e1f; }
+    .toolbar .btn-secondary:hover { background: #b9872e; border-color: #b9872e; color: #fff; }
+    .toolbar .btn-outline { border: 1px solid rgba(111, 78, 31, .35); color: #3f2d10; background: #f7f0e0; }
+    .toolbar .btn-outline:hover { background: #ead7b2; border-color: rgba(111, 78, 31, .55); }
+    .list { display: grid; gap: .65rem; max-height: 74vh; overflow: auto; }
+    .item { border: 1px solid rgba(185,135,46,.25); border-radius: 12px; padding: .75rem; display: grid; grid-template-columns: 1fr auto; gap: .75rem; align-items: center; }
+    .item p { margin: .2rem 0 0; color: var(--muted); }
+    .item-actions { display: flex; gap: .4rem; }
+    .item-actions .btn { min-width: 92px; text-align: center; }
+    .item-actions .btn-ghost { border: 1px solid rgba(111, 78, 31, .35); color: #3f2d10; background: #f7f0e0; }
+    .item-actions .btn-ghost:hover { background: #ead7b2; border-color: rgba(111, 78, 31, .55); }
+    .item-actions .btn-danger { background: #8a1c1c; border: 1px solid #8a1c1c; color: #fff; }
+    .item-actions .btn-danger:hover { background: #a32222; border-color: #a32222; }
+    .muted-note { color: var(--muted); font-size: .92rem; }
+    .images-box { border: 1px dashed rgba(185,135,46,.45); border-radius: var(--radius-sm); padding: .75rem; background: rgba(255, 253, 248, .55); }
+    .images-list { display: grid; gap: .55rem; }
+    .image-row { display: grid; grid-template-columns: 1fr auto auto; gap: .45rem; align-items: center; }
+    .image-row button { white-space: nowrap; }
+    .image-preview { width: 56px; height: 40px; border-radius: 8px; object-fit: cover; border: 1px solid rgba(185,135,46,.3); background: #f3f4f6; }
+    .hint { font-size: .84rem; color: var(--muted); margin: .2rem 0 .45rem; }
+    @media (max-width: 980px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .item { grid-template-columns: 1fr; }
+      .item-actions { width: 100%; }
+      .item-actions .btn { flex: 1; min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="dashboard-wrap header-inner">
+      <div class="brand">
+        <a href="INDEX.HTML" class="logo" aria-label="Voltar ao site">
+          <img src="imagem/LOGO-transparent.png" alt="Logo" class="logo-img" />
+          <span class="logo-text">
+            <span class="logo-name">Painel</span>
+            <span class="logo-role">Gestão de Imóveis</span>
+          </span>
+        </a>
+      </div>
+      <div class="actions">
+        <a class="btn btn-ghost" href="INDEX.HTML">Voltar ao site</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-wrap" style="padding-top:1rem;">
+    <div class="dashboard-grid">
+      <section class="panel">
+        <h2>Cadastro de Imóvel</h2>
+        <p class="muted-note">Sem banco de dados: os dados ficam no navegador e podem ser exportados/importados em JSON.</p>
+        <form id="propertyForm" class="form-grid">
+          <label>
+            Título
+            <input id="title" required />
+          </label>
+          <label>
+            ID (slug)
+            <input id="id" placeholder="ex: apartamento-centro-sp" required />
+          </label>
+          <label>
+            Cidade
+            <input id="city" required />
+          </label>
+          <label>
+            Estado
+            <input id="state" maxlength="2" required />
+          </label>
+          <label>
+            Bairro
+            <input id="neighborhood" required />
+          </label>
+          <label>
+            Preço (número)
+            <input id="price" type="number" min="0" required />
+          </label>
+          <label>
+            Quartos
+            <input id="bedrooms" type="number" min="0" required />
+          </label>
+          <label>
+            Área (m²)
+            <input id="area" type="number" min="0" required />
+          </label>
+          <div class="full images-box">
+            <label style="margin-bottom:.45rem;">Galeria de Imagens (quantas quiser)</label>
+            <p class="hint">Use URL completa ou apenas o nome do arquivo. O painel completa automaticamente com imagem/imoveis/.</p>
+            <div id="imagesList" class="images-list"></div>
+            <div class="toolbar" style="margin-top:.55rem;">
+              <button class="btn btn-outline" id="addImageField" type="button">+ Adicionar imagem</button>
+            </div>
+          </div>
+          <label class="full">
+            URL do modelo 3D (detalhes)
+            <input id="model3D" placeholder="https://...glb" />
+          </label>
+          <label class="full">
+            Descrição curta
+            <input id="shortDescription" required />
+          </label>
+          <label class="full">
+            Descrição completa
+            <textarea id="description" rows="4" required></textarea>
+          </label>
+          <label>
+            Destaque
+            <select id="featured">
+              <option value="false">Não</option>
+              <option value="true">Sim</option>
+            </select>
+          </label>
+          <label>
+            Tipo
+            <select id="type">
+              <option value="apartment">Apartamento</option>
+              <option value="house">Casa</option>
+              <option value="penthouse">Cobertura</option>
+            </select>
+          </label>
+          <div class="toolbar full">
+            <button class="btn btn-primary" type="submit">Salvar imóvel</button>
+            <button class="btn btn-ghost" id="resetForm" type="button">Limpar</button>
+            <button class="btn btn-secondary" id="exportDeployJson" type="button">Gerar properties.json (deploy)</button>
+            <button class="btn btn-outline" id="clearCacheLocal" type="button">Limpar cache/local</button>
+            <label class="btn btn-outline" for="importFile" style="cursor:pointer;">Importar JSON</label>
+            <input id="importFile" type="file" accept="application/json" style="display:none;" />
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Imóveis cadastrados</h2>
+        <div id="propertyList" class="list"></div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "site": {
+    "name": "ImoPrime",
+    "fullName": "THE FUTURE IMOBILIÁRIA",
+    "tagline": "Encontre o imóvel ideal com tecnologia 3D e experiência premium",
+    "description": "Imobiliária premium especializada em imóveis de alto padrão com tours 3D interativos, plantas digitais e atendimento personalizado.",
+    "url": "https://imoprime.com.br",
+    "language": "pt-BR",
+    "locale": "pt_BR"
+  },
+  "contact": {
+    "phone": "5511999999999",
+    "phoneFormatted": "(11) 99999-9999",
+    "email": "contato@imoprime.com",
+    "whatsapp": "5511999999999",
+    "address": {
+      "street": "Rua Exemplo, 123",
+      "city": "São Paulo",
+      "state": "SP",
+      "zipCode": "01310-100",
+      "country": "Brasil"
+    },
+    "socialMedia": {
+      "facebook": "https://facebook.com/imoprime",
+      "instagram": "https://instagram.com/imoprime",
+      "linkedin": "https://linkedin.com/company/imoprime"
+    }
+  },
+  "seo": {
+    "keywords": [
+      "imóveis de luxo",
+      "apartamentos São Paulo",
+      "casas Rio de Janeiro",
+      "tour 3D imóveis",
+      "imobiliária premium",
+      "comprar imóvel",
+      "vender imóvel"
+    ],
+    "author": "ImoPrime Imobiliária",
+    "twitterHandle": "@imoprime"
+  },
+  "features": {
+    "enableDarkMode": true,
+    "enable3DTours": true,
+    "enableFilters": true,
+    "enablePagination": true,
+    "enableWhatsAppIntegration": true,
+    "itemsPerPage": 9,
+    "carouselAutoplayInterval": 5000
+  },
+  "analytics": {
+    "ga4MeasurementId": "G-P4E25SY5VZ",
+    "googleAnalyticsId": "",
+    "facebookPixelId": "XXXXXXXXXXXXXXXXX"
+  }
+}

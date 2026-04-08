@@ -7,22 +7,28 @@
   <link rel="stylesheet" href="STYLE.CSS">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <a href="INDEX.HTML" class="logo">THE FUTURE<span class="accent">IMOBILIÁRIA</span></a>
+        <a href="INDEX.HTML" class="logo" aria-label="Lucas Vinicius - Corretor de Imóveis">
+          <img src="imagem/LOGO-transparent.png" alt="Lucas Vinicius - Corretor de Imóveis" class="logo-img">
+          <span class="logo-text">
+            <span class="logo-name">Lucas Vinicius</span>
+            <span class="logo-role">Corretor de Imóveis</span>
+          </span>
+        </a>
       </div>
       <nav class="main-nav" id="mainNav">
         <ul>
           <li><a href="INDEX.HTML#home">Início</a></li>
-          <li><a href="CATALOG.HTML">Catálogo de Imóveis</a></li>
-          <li><a href="INDEX.HTML#tour3d">Tour 3D</a></li>
+          <li><a href="CATALOG.HTML">Catálogo</a></li>
           <li><a href="INDEX.HTML#about">Sobre a Imobiliária</a></li>
           <li><a href="INDEX.HTML#vantagens">Vantagens</a></li>
           <li><a href="INDEX.HTML#testimonials">Depoimentos</a></li>
+          <li><a href="INDEX.HTML#blog">Notícias</a></li>
           <li><a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C+gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+a+imobili%C3%A1ria." target="_blank" rel="noopener">Contato</a></li>
         </ul>
       </nav>
@@ -56,37 +62,37 @@
         <!-- Card 1 -->
         <article class="card" data-location="São Paulo" data-bedrooms="3" data-price="1200000">
           <figure class="card-image"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3b3f6b" alt="Apartamento"></figure>
-          <div class="card-body"><h3>Apartamento Luxuoso no Centro</h3><p class="muted">3 quartos • 150m²</p><div class="card-footer"><strong class="price">R$ 1.200.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=1">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button></div></div></div>
+          <div class="card-body"><h3>Apartamento Luxuoso no Centro</h3><p class="muted">3 quartos • 150m²</p><div class="card-footer"><strong class="price">R$ 1.200.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=1">Ver detalhes</a></div></div></div>
         </article>
 
         <!-- Card 2 -->
         <article class="card" data-location="Rio de Janeiro" data-bedrooms="2" data-price="800000">
           <figure class="card-image"><img src="imagem/casa beira mar.avif" alt="Casa"></figure>
-          <div class="card-body"><h3>Casa à Beira-Mar</h3><p class="muted">2 quartos • 120m²</p><div class="card-footer"><strong class="price">R$ 800.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=2">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button></div></div></div>
+          <div class="card-body"><h3>Casa à Beira-Mar</h3><p class="muted">2 quartos • 120m²</p><div class="card-footer"><strong class="price">R$ 800.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=2">Ver detalhes</a></div></div></div>
         </article>
 
         <!-- Card 3 -->
         <article class="card" data-location="São Paulo" data-bedrooms="1" data-price="450000">
           <figure class="card-image"><img src="imagem/apartamento-studio.jpg" alt="Estúdio"></figure>
-          <div class="card-body"><h3>Estúdio Moderno</h3><p class="muted">1 quarto • 42m²</p><div class="card-footer"><strong class="price">R$ 450.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=3">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button></div></div></div>
+          <div class="card-body"><h3>Estúdio Moderno</h3><p class="muted">1 quarto • 42m²</p><div class="card-footer"><strong class="price">R$ 450.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=3">Ver detalhes</a></div></div></div>
         </article>
 
         <!-- Card 4 -->
         <article class="card" data-location="Porto Alegre" data-bedrooms="3" data-price="650000">
           <figure class="card-image"><img src="imagem/casa familar.jpg" alt="Casa cidade"></figure>
-          <div class="card-body"><h3>Casa Familiar</h3><p class="muted">3 quartos • 130m²</p><div class="card-footer"><strong class="price">R$ 650.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=4">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button></div></div></div>
+          <div class="card-body"><h3>Casa Familiar</h3><p class="muted">3 quartos • 130m²</p><div class="card-footer"><strong class="price">R$ 650.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=4">Ver detalhes</a></div></div></div>
         </article>
 
         <!-- Card 5 -->
         <article class="card" data-location="São Paulo" data-bedrooms="2" data-price="980000">
           <figure class="card-image"><img src="imagem/apartamento com varanda.jpg" alt="Apartamento moderno"></figure>
-          <div class="card-body"><h3>Apartamento com Varanda</h3><p class="muted">2 quartos • 100m²</p><div class="card-footer"><strong class="price">R$ 980.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=5">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button></div></div></div>
+          <div class="card-body"><h3>Apartamento com Varanda</h3><p class="muted">2 quartos • 100m²</p><div class="card-footer"><strong class="price">R$ 980.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=5">Ver detalhes</a></div></div></div>
         </article>
 
         <!-- Card 6 -->
         <article class="card" data-location="Rio de Janeiro" data-bedrooms="4" data-price="2200000">
           <figure class="card-image"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ijkl56" alt="Cobertura"></figure>
-          <div class="card-body"><h3>Cobertura Penthouse</h3><p class="muted">4 quartos • 320m²</p><div class="card-footer"><strong class="price">R$ 2.200.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=6">Ver detalhes</a><button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button></div></div></div>
+          <div class="card-body"><h3>Cobertura Penthouse</h3><p class="muted">4 quartos • 320m²</p><div class="card-footer"><strong class="price">R$ 2.200.000</strong><div class="card-actions"><a class="btn btn-sm" href="PROPERTY.HTML?id=6">Ver detalhes</a></div></div></div>
         </article>
 
         <!-- Novos cards genéricos -->
@@ -99,7 +105,6 @@
               <strong class="price">R$ 750.000</strong>
               <div class="card-actions">
                 <a class="btn btn-sm" href="PROPERTY.HTML?id=7">Ver detalhes</a>
-                <button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button>
               </div>
             </div>
           </div>
@@ -114,7 +119,6 @@
               <strong class="price">R$ 1.800.000</strong>
               <div class="card-actions">
                 <a class="btn btn-sm" href="PROPERTY.HTML?id=8">Ver detalhes</a>
-                <button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb">Tour 3D</button>
               </div>
             </div>
           </div>
@@ -129,7 +133,6 @@
               <strong class="price">R$ 600.000</strong>
               <div class="card-actions">
                 <a class="btn btn-sm" href="PROPERTY.HTML?id=9">Ver detalhes</a>
-                <button class="btn btn-sm btn-ghost open-tour" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb">Tour 3D</button>
               </div>
             </div>
           </div>
@@ -144,9 +147,32 @@
     </section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-inner"><div><strong>ImoPrime</strong><p class="muted">(11) 99999-9999 · contato@imoprime.com</p></div></div></footer>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-model">
+      <div class="footer-brand">
+        <img src="imagem/LOGO-transparent.png" alt="Lucas Vinicius Imobiliaria" class="footer-brand-logo">
+        <div>
+          <h3><span>Lucas Vinicius</span><span>Corretor de Imoveis</span></h3>
+          <p>Modernidade, tecnologia e elegancia</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a class="footer-link" href="tel:+5511999999999"><span class="footer-icon">P</span><span>(11) 99999-9999</span></a>
+        <a class="footer-link" href="mailto:contato@imoprime.com"><span class="footer-icon">E</span><span>contato@imoprime.com</span></a>
+      </div>
+      <div class="footer-col">
+        <h4>Redes sociais</h4>
+        <a class="footer-link" href="https://instagram.com/imoprime" target="_blank" rel="noopener noreferrer"><span class="footer-icon">I</span><span>@imoprime</span></a>
+        <a class="footer-link" href="https://facebook.com/imoprime" target="_blank" rel="noopener noreferrer"><span class="footer-icon">F</span><span>/imoprime</span></a>
+        <a class="footer-link" href="https://linkedin.com/company/imoprime" target="_blank" rel="noopener noreferrer"><span class="footer-icon">L</span><span>imoprime</span></a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-line"></div>
+    </div>
+  </footer>
 
-  <script src="SCRIPT.JS"></script>
-  <script src="CATALOG.JS"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

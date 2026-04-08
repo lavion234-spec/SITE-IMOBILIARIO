@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   };
 
+  const fallbackImage = 'imagem/apartamento-studio.jpg';
+
   const prop = properties[id] || properties['1'];
 
   // Populate DOM
@@ -103,7 +105,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   const modelViewer = document.getElementById('propertyModel');
 
   function setMainImage(src){
-    if(mainImg) mainImg.src = src;
+    if(mainImg){
+      mainImg.onerror = ()=>{ mainImg.onerror = null; mainImg.src = fallbackImage; };
+      mainImg.src = src;
+    }
   }
 
   // thumbnails
@@ -112,6 +117,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     prop.images.forEach((src,idx)=>{
       const t = document.createElement('img');
       t.src = src; t.alt = `thumb-${idx}`; t.style.width='80px'; t.style.height='60px'; t.style.objectFit='cover'; t.style.borderRadius='6px'; t.style.cursor='pointer';
+      t.onerror = ()=>{ t.onerror = null; t.src = fallbackImage; };
       t.addEventListener('click',()=> setMainImage(src));
       thumbnails.appendChild(t);
     });
@@ -123,6 +129,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     prop.images.forEach(src=>{
       const img = document.createElement('img');
       img.src = src; img.alt = prop.title; img.style.width='100%'; img.style.borderRadius='8px';
+      img.onerror = ()=>{ img.onerror = null; img.src = fallbackImage; };
       galleryGrid.appendChild(img);
     });
   }
