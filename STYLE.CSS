@@ -36,6 +36,7 @@ a{color:inherit;text-decoration:none}
 .main-nav a{color:var(--text);font-weight:600;transition:color .18s ease}
 .main-nav a:hover{color:var(--accent)}
 .header-inner .main-nav{margin-right:1.25rem}
+.main-nav.is-open{display:block}
 .actions{display:flex;align-items:center;gap:0.5rem}
 .btn{padding:0.6rem 1rem;border-radius:var(--radius-sm);border:0;cursor:pointer;font-weight:600;transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease}
 .btn-primary{background:var(--accent);color:var(--white);box-shadow:0 4px 12px rgba(185,135,46,0.28)}
@@ -578,10 +579,44 @@ body.catalog-page .footer-model{
 	========================= */
 .muted{color:var(--muted);font-size:.95rem}
 @media(max-width:900px){
+	.header-inner{position:relative}
 	.logo{gap:0.45rem}
 	.logo-img{height:46px}
 	.logo-name{font-size:1.05rem;letter-spacing:0.02em}
 	.logo-role{display:none}
+	.main-nav{
+		display:none;
+		position:absolute;
+		top:calc(100% + 0.45rem);
+		left:0;
+		right:0;
+		padding:0 0.2rem;
+		z-index:55;
+	}
+	.main-nav ul{
+		display:none;
+		flex-direction:column;
+		gap:0.15rem;
+		padding:0.55rem;
+		border-radius:14px;
+		background:var(--card-bg);
+		border:1px solid var(--panel-border);
+		box-shadow:0 12px 28px rgba(0,0,0,0.16);
+	}
+	/* Mobile: menu mais objetivo para conversao */
+	.main-nav ul li:nth-child(4),
+	.main-nav ul li:nth-child(6){display:none}
+	.main-nav.is-open ul{display:flex}
+	.main-nav a{
+		display:block;
+		padding:0.7rem 0.75rem;
+		border-radius:10px;
+	}
+	.main-nav a:hover,
+	.main-nav a:focus-visible{
+		background:var(--gold-soft-bg);
+		outline:none;
+	}
 	.hero-text h1{font-size:2rem;margin:0 0 0.5rem}
 	.lead{font-size:1rem}
 	.hero-ctas{gap:0.75rem;flex-direction:column}
@@ -594,7 +629,6 @@ body.catalog-page .footer-model{
 	.about-profile{grid-template-columns:1fr;text-align:center}
 	.about-profile-content h3{font-size:1.35rem}
 	.contact-grid{grid-template-columns:1fr}
-	.main-nav ul{display:none}
 	.actions #menuToggle{display:block}
 	.historia-capitulos{grid-template-columns:1fr;padding:0 0.35rem}
 	.historia-capitulos::before{left:20px;transform:none}

@@ -390,19 +390,55 @@ class App {
     const mainNav = document.getElementById('mainNav');
 
     if (menuToggle && mainNav) {
+      const closeMenu = () => {
+        this.menuOpen = false;
+        mainNav.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
+      };
+
+      const openMenu = () => {
+        this.menuOpen = true;
+        mainNav.classList.add('is-open');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuToggle.setAttribute('aria-label', 'Fechar menu');
+      };
+
       menuToggle.addEventListener('click', () => {
-        this.menuOpen = !this.menuOpen;
-        mainNav.style.display = this.menuOpen ? 'block' : '';
-        menuToggle.setAttribute('aria-expanded', this.menuOpen);
-        menuToggle.setAttribute('aria-label', this.menuOpen ? 'Fechar menu' : 'Abrir menu');
+        if (this.menuOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
       });
 
       // Close menu when clicking outside
       document.addEventListener('click', (e) => {
-        if (this.menuOpen && !mainNav.contains(e.target) && e.target !== menuToggle) {
-          this.menuOpen = false;
-          mainNav.style.display = '';
-          menuToggle.setAttribute('aria-expanded', 'false');
+        if (this.menuOpen && !mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      // Close on link click (mobile UX expected behavior)
+      mainNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (window.matchMedia('(max-width: 900px)').matches) {
+            closeMenu();
+          }
+        });
+      });
+
+      // Keep state consistent when resizing to desktop
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) {
+          closeMenu();
+        }
+      });
+
+      // Accessibility: close menu with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.menuOpen) {
+          closeMenu();
         }
       });
     }
