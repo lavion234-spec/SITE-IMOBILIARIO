@@ -5,14 +5,16 @@
 
 import { debounce } from './utils.js';
 
+const EMPTY_FILTERS = {
+  location: '',
+  bedrooms: '',
+  price: '',
+  search: ''
+};
+
 class FilterManager {
   constructor() {
-    this.filters = {
-      location: '',
-      bedrooms: '',
-      price: '',
-      search: ''
-    };
+    this.filters = { ...EMPTY_FILTERS };
     this.filterElements = {};
     this.onFilterChange = null;
   }
@@ -34,7 +36,7 @@ class FilterManager {
   attachEventListeners() {
     Object.entries(this.filterElements).forEach(([key, element]) => {
       if (!element) return;
-      
+
       if (key === 'search') {
         const debouncedHandler = debounce(() => {
           this.filters.search = element.value.toLowerCase().trim();
@@ -52,16 +54,18 @@ class FilterManager {
   }
 
   filterProperties(properties) {
+    const { location, bedrooms, price, search } = this.filters;
+
     return properties.filter(property => {
       // Location filter
-      if (this.filters.location) {
-        const locationMatch = property.location.city.toLowerCase().includes(this.filters.location.toLowerCase());
+      if (location) {
+        const locationMatch = property.location.city.toLowerCase().includes(location.toLowerCase());
         if (!locationMatch) return false;
       }
 
       // Bedrooms filter
-      if (this.filters.bedrooms) {
-        const bedroomsValue = parseInt(this.filters.bedrooms);
+      if (bedrooms) {
+        const bedroomsValue = parseInt(bedrooms, 10);
         if (bedroomsValue === 3) {
           // 3+ bedrooms
           if (property.details.bedrooms < 3) return false;
@@ -71,21 +75,20 @@ class FilterManager {
       }
 
       // Price filter
-      if (this.filters.price) {
-        const price = property.price;
-        
-        if (this.filters.price.includes('-')) {
-          const [min, max] = this.filters.price.split('-').map(Number);
-          if (price < min || price > max) return false;
-        } else if (this.filters.price.endsWith('+')) {
-          const min = Number(this.filters.price.replace('+', ''));
-          if (price < min) return false;
+      if (price) {
+        const propertyPrice = property.price;
+
+        if (price.includes('-')) {
+          const [min, max] = price.split('-').map(Number);
+          if (propertyPrice < min || propertyPrice > max) return false;
+        } else if (price.endsWith('+')) {
+          const min = Number(price.replace('+', ''));
+          if (propertyPrice < min) return false;
         }
       }
 
       // Search filter
-      if (this.filters.search) {
-        const searchText = this.filters.search.toLowerCase();
+      if (search) {
         const searchableText = [
           property.title,
           property.description,
@@ -95,7 +98,7 @@ class FilterManager {
           ...property.features
         ].join(' ').toLowerCase();
 
-        if (!searchableText.includes(searchText)) return false;
+        if (!searchableText.includes(search)) return false;
       }
 
       return true;
@@ -103,7 +106,7 @@ class FilterManager {
   }
 
   triggerFilterChange() {
-    if (this.onFilterChange && typeof this.onFilterChange === 'function') {
+    if (typeof this.onFilterChange === 'function') {
       this.onFilterChange(this.filters);
     }
   }
@@ -113,20 +116,15 @@ class FilterManager {
   }
 
   reset() {
-    this.filters = {
-      location: '',
-      bedrooms: '',
-      price: '',
-      search: ''
-    };
+    this.filters = { ...EMPTY_FILTERS };
 
     Object.values(this.filterElements).forEach(element => {
-      if (element) {
-        if (element.tagName === 'INPUT') {
-          element.value = '';
-        } else if (element.tagName === 'SELECT') {
-          element.selectedIndex = 0;
-        }
+      if (!element) return;
+
+      if (element.tagName === 'INPUT') {
+        element.value = '';
+      } else if (element.tagName === 'SELECT') {
+        element.selectedIndex = 0;
       }
     });
 

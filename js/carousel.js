@@ -14,7 +14,6 @@ class Carousel {
       autoplay: true,
       interval: 5000,
       itemsPerView: 3,
-      gap: 20,
       ...options
     };
 
@@ -22,10 +21,11 @@ class Carousel {
     this.items = [];
     this.isPlaying = false;
     this.intervalId = null;
+    this.handleResize = () => this.updateItemsPerView();
     
     // Ajustar itemsPerView baseado no tamanho da tela
     this.updateItemsPerView();
-    window.addEventListener('resize', () => this.updateItemsPerView());
+    window.addEventListener('resize', this.handleResize);
   }
   
   updateItemsPerView() {
@@ -48,32 +48,33 @@ class Carousel {
     this.setupControls();
     this.show(0);
 
-    if (this.options.autoplay && !prefersReducedMotion()) {
+    if (this.canAutoplay()) {
       this.start();
     }
 
     this.setupAccessibility();
   }
 
+  canAutoplay() {
+    return this.options.autoplay && !prefersReducedMotion();
+  }
+
+  bindControl(button, action, label) {
+    if (!button) return;
+
+    button.addEventListener('click', () => {
+      action();
+      this.pause();
+    });
+    button.setAttribute('aria-label', label);
+  }
+
   setupControls() {
     const prevButton = this.container.parentElement.querySelector('.carousel-control.prev');
     const nextButton = this.container.parentElement.querySelector('.carousel-control.next');
 
-    if (prevButton) {
-      prevButton.addEventListener('click', () => {
-        this.previous();
-        this.pause();
-      });
-      prevButton.setAttribute('aria-label', 'Item anterior');
-    }
-
-    if (nextButton) {
-      nextButton.addEventListener('click', () => {
-        this.next();
-        this.pause();
-      });
-      nextButton.setAttribute('aria-label', 'Próximo item');
-    }
+    this.bindControl(prevButton, () => this.previous(), 'Item anterior');
+    this.bindControl(nextButton, () => this.next(), 'Próximo item');
 
     // Keyboard navigation
     this.container.addEventListener('keydown', (e) => {
@@ -89,7 +90,7 @@ class Carousel {
     // Pause on hover
     this.container.addEventListener('mouseenter', () => this.pause());
     this.container.addEventListener('mouseleave', () => {
-      if (this.options.autoplay && !prefersReducedMotion()) {
+      if (this.canAutoplay()) {
         this.start();
       }
     });
@@ -155,6 +156,7 @@ class Carousel {
 
   destroy() {
     this.pause();
+    window.removeEventListener('resize', this.handleResize);
     this.items.forEach(item => {
       item.style.display = '';
       item.removeAttribute('aria-hidden');
@@ -162,9 +164,8 @@ class Carousel {
   }
 
   normalizeIndex(index) {
-    if (index < 0) return 0;
-    if (index >= this.items.length) return this.items.length - this.options.itemsPerView;
-    return index;
+    const maxStart = Math.max(0, this.items.length - this.options.itemsPerView);
+    return Math.min(Math.max(index, 0), maxStart);
   }
 
   updateItems() {

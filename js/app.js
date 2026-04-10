@@ -18,7 +18,6 @@ class App {
     this.carousel = null;
     this.tourModal = null;
     this.menuOpen = false;
-    this.analyticsMeasurementId = null;
   }
 
   async init() {
@@ -58,8 +57,6 @@ class App {
       return;
     }
 
-    this.analyticsMeasurementId = measurementId;
-
     if (!document.querySelector('script[data-ga4="true"]')) {
       const script = document.createElement('script');
       script.async = true;
@@ -87,13 +84,14 @@ class App {
 
   setupConversionTracking() {
     document.addEventListener('click', (event) => {
+      const sourcePage = this.detectCurrentPage();
       const detailsLink = event.target.closest('a[href*="PROPERTY.HTML?id="]');
       if (detailsLink) {
         const url = new URL(detailsLink.href, window.location.origin);
         const propertyId = url.searchParams.get('id') || 'unknown';
         this.trackEvent('select_property', {
           property_id: propertyId,
-          source_page: this.detectCurrentPage()
+          source_page: sourcePage
         });
       }
 
@@ -101,7 +99,7 @@ class App {
       if (whatsappLink) {
         this.trackEvent('generate_lead', {
           method: 'whatsapp',
-          source_page: this.detectCurrentPage()
+          source_page: sourcePage
         });
       }
     });
@@ -175,16 +173,7 @@ class App {
     carouselContainer.innerHTML = '';
 
     if (filteredProperties.length === 0) {
-      carouselContainer.innerHTML = `
-        <div class="no-results" role="status" aria-live="polite">
-          <p>Nenhum imóvel encontrado com os filtros selecionados.</p>
-          <button class="btn btn-secondary" id="resetFilters">Limpar Filtros</button>
-        </div>
-      `;
-
-      document.getElementById('resetFilters')?.addEventListener('click', () => {
-        this.filterManager.reset();
-      });
+      this.renderNoResults(carouselContainer);
       return;
     }
 
@@ -234,16 +223,7 @@ class App {
     cardsContainer.innerHTML = '';
 
     if (filteredProperties.length === 0) {
-      cardsContainer.innerHTML = `
-        <div class="no-results" role="status" aria-live="polite">
-          <p>Nenhum imóvel encontrado com os filtros selecionados.</p>
-          <button class="btn btn-secondary" id="resetFilters">Limpar Filtros</button>
-        </div>
-      `;
-      
-      document.getElementById('resetFilters')?.addEventListener('click', () => {
-        this.filterManager.reset();
-      });
+      this.renderNoResults(cardsContainer);
       return;
     }
 
@@ -257,6 +237,19 @@ class App {
 
     // Setup tour buttons for new cards
     this.setupTourButtons();
+  }
+
+  renderNoResults(container) {
+    container.innerHTML = `
+      <div class="no-results" role="status" aria-live="polite">
+        <p>Nenhum imóvel encontrado com os filtros selecionados.</p>
+        <button class="btn btn-secondary" id="resetFilters">Limpar Filtros</button>
+      </div>
+    `;
+
+    document.getElementById('resetFilters')?.addEventListener('click', () => {
+      this.filterManager.reset();
+    });
   }
 
   createPropertyCard(property) {
@@ -299,13 +292,13 @@ class App {
   async renderPropertyDetails() {
     const propertyId = new URLSearchParams(window.location.search).get('id');
     if (!propertyId) {
-      window.location.href = 'CATALOG.HTML';
+      this.redirectToCatalog();
       return;
     }
 
     const property = this.config.getProperty(propertyId);
     if (!property) {
-      window.location.href = 'CATALOG.HTML';
+      this.redirectToCatalog();
       return;
     }
 
@@ -320,6 +313,10 @@ class App {
     if (modelViewer && property.model3D) {
       modelViewer.setAttribute('src', property.model3D);
     }
+  }
+
+  redirectToCatalog() {
+    window.location.href = 'CATALOG.HTML';
   }
 
   populatePropertyDetails(property) {
@@ -458,18 +455,14 @@ class App {
 
   setupTourButtons() {
     document.querySelectorAll('.open-tour').forEach(button => {
-      const handler = () => {
+      button.onclick = () => {
         const modelUrl = button.getAttribute('data-model');
         const title = button.getAttribute('data-title') || '';
-        
+
         if (this.tourModal && modelUrl) {
           this.tourModal.open3DTour(modelUrl, title);
         }
       };
-
-      // Remove old listener if exists
-      button.removeEventListener('click', handler);
-      button.addEventListener('click', handler);
     });
   }
 
@@ -518,14 +511,15 @@ class App {
 }
 
 // Initialize app when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    const app = new App();
-    app.init();
-  });
-} else {
+const boot = () => {
   const app = new App();
   app.init();
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
 }
 
 export default App;
