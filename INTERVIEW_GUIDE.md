@@ -489,3 +489,4 @@ Mostre interesse e conhecimento técnico:
 **Lembre-se:** Este projeto demonstra competências de nível sênior. Você não apenas sabe **fazer**, mas sabe **porque fazer** e **quando fazer**.
 
 **Boa sorte! 💪**
+  
