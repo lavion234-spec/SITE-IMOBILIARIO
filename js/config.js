@@ -92,10 +92,10 @@ class Config {
         url: window.location.origin
       },
       contact: {
-        phone: '5511999999999',
-        phoneFormatted: '(11) 99999-9999',
+        phone: '558488884875',
+        phoneFormatted: '(84) 88884-875',
         email: 'contato@imoprime.com',
-        whatsapp: '5511999999999'
+        whatsapp: '558488884875'
       },
       features: {
         enableDarkMode: true,

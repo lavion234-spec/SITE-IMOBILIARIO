@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id') || '1';
 
-  // Telefone da empresa em formato internacional sem sinais: ex: +55 (11) 99999-9999 -> 5511999999999
-  const companyPhone = '5511999999999';
+  // Telefone da empresa em formato internacional sem sinais: ex: +55 (84) 88884-875 -> 558488884875
+  const companyPhone = '558488884875';
 
   const properties = {
     '1':{

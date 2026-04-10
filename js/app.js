@@ -467,7 +467,7 @@ class App {
   }
 
   setupScheduleButtons() {
-    const phone = this.config.get('contact.whatsapp') || '5511999999999';
+    const phone = this.config.get('contact.whatsapp') || '558488884875';
     const propertyId = new URLSearchParams(window.location.search).get('id');
     const property = this.config.getProperty(propertyId);
 
